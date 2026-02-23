@@ -1,0 +1,9 @@
+:80 {
+    # Set the root directory for your application files
+    root /srv/current/public
+
+    # Proxy PHP requests to the php-fpm service
+    php_fastcgi php-fpm:9000 {
+	    resolve_root_symlink
+    }
+}

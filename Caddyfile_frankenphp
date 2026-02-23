@@ -1,0 +1,14 @@
+{
+    auto_https off
+	frankenphp
+}
+
+:80 {
+
+    # Set the root directory for your application files
+    root /srv/current/public
+
+	php_server {
+		resolve_root_symlink
+	}
+}

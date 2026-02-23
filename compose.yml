@@ -1,0 +1,38 @@
+services:
+
+  frankenphp:
+    image: dunglas/frankenphp:1.11.2
+    ports:
+      - "81:80"
+    volumes:
+      - ./Caddyfile_frankenphp:/etc/frankenphp/Caddyfile:ro
+      - ./src:/srv
+      - caddy_data_frankenphp:/data
+
+  caddy:
+    image: caddy:2.10.2-alpine # Use a recent official Caddy image from Docker Hub
+    ports:
+      - "80:80"
+    volumes:
+      - ./Caddyfile_fpm:/etc/caddy/Caddyfile:ro
+      - ./src:/srv
+      - caddy_data_fpm:/data # Volume for Caddy's certificates and data
+    depends_on:
+      - php-fpm # Ensure PHP-FPM starts first
+    networks:
+      - app-network
+
+  php-fpm:
+    image: php:8.4-fpm-alpine # Use a recent official PHP-FPM image from Docker Hub
+    volumes:
+      - ./src:/srv
+    networks:
+      - app-network
+
+volumes:
+  caddy_data_fpm:
+  caddy_data_frankenphp:
+
+networks:
+  app-network:
+    # Optional: use a specific network name
