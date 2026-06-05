@@ -1,6 +1,15 @@
 {
     auto_https off
-	frankenphp
+	frankenphp {
+		num_threads 8
+		max_threads auto
+		max_wait_time 30s
+		php_ini {
+			max_execution_time 60
+			expose_php 0
+		}
+	}
+
 }
 
 :80 {
@@ -8,7 +17,5 @@
     # Set the root directory for your application files
     root /srv/current/public
 
-	php_server {
-		resolve_root_symlink
-	}
+	php_server
 }

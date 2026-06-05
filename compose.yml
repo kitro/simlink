@@ -1,7 +1,7 @@
 services:
 
   frankenphp:
-    image: dunglas/frankenphp:1.11.2
+    image: dunglas/frankenphp:1.12.4
     ports:
       - "81:80"
     volumes:

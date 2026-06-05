@@ -95,7 +95,7 @@ curl localhost:81
 
 output: `From version 1` (issue)
 
-In frankenphp i tried to reload the config `frankenphp reload -c /etc/frankenphp/Caddyfile` with no luck. still pointing to 
+In frankenphp i tried to reload the config `frankenphp reload -c /etc/frankenphp/Caddyfile -f` with no luck. still pointing to 
 old symlink.
 
 Only when I restart the container `docker compose restart frankenphp` than I got the good output `From version 2`.
