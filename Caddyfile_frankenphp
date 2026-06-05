@@ -15,7 +15,7 @@
 :80 {
 
     # Set the root directory for your application files
-    root /srv/current/public
+    root /srv/version_1/public
 
 	php_server
 }
